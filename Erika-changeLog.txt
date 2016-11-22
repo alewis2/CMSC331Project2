@@ -1,0 +1,23 @@
+--Erika's Changelog [Last updated: 11/22/16]
+
+
+	[11/22/16]
+	- Created 0-TaskSummary.txt
+		General task list, compiling information from project requirements/etc.
+		An overview of what we have to do for Project 2.
+
+
+	[11/15/16]
+	- Database setup complete according to given design 
+	  	(from MySql table commands needed.txt)
+	- CommonMethods now connects to database 'schu1' 
+		....but I've had no success entering data into it from the project
+		(given code is broken?)
+		Feel free to access/test/edit it through PHPMyAdmin.
+		Password is the username, as usual
+
+	- Imported style sheet (standard.css) to 05StudCancelApp.php
+	  	Made page-specific style information more concise 
+	 	(emoved redundancies from standard.css, left unique elements)
+	  	May be removed entirely later, or moved to a stylesheet.
+	  	To be discussed.

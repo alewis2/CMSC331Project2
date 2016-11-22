@@ -1,0 +1,117 @@
+////// PROJECT 2 INFO ////////////////////////////////////////////////
+Client Contact: Michelle Bulger
+		(do we have their email.....?)
+
+Timeline
+	11/25		Business Use Cases
+	12/7		Show client almost completed project
+	12/1		Select 2 Presentation times
+	12/20		All code and documentation, by 11:59:59pm EST. Due date.
+
+	12/20~21	Presentation day
+
+
+Submit
+	Code in .zip through GL
+	Submission style same as CMSC 341
+	
+	Starting from same directory as Zip file:
+	cp proj2.zip /afs/umbc.edu/users/s/l/slupoli/pub/cs331/USERNAME/proj2
+
+
+
+
+
+
+////// TASKS /////////////////////////////////////////////////////////
+---[Business Use Cases]--------------------------
+Time sensitive: 11/25 (email only)
+
+	Essentially a diagram of how the website works.........?
+
+	   [Issues to consider]
+		- Will need to go through old code, see what works and what doesn't,
+		  how the pages interact with each other, etc.
+		 (Should we scrap/redo any parts to make it better, or just 
+		  work off of what's already there?)
+
+		- Ask Lupoli for email...? Who do we contact, Lupoli or the client?
+
+
+
+---[Advisor side: Choose student ]----------------
+	- For every new appointment, 
+	   allow advisor to book appointment with specific student 
+
+	   [Issues to consider]
+		- Choosing student: UMBC ID based, Name based, or email based?
+		- Should it have validation for if the student exists in database or no?
+		- What happens if that student already has a meeting?
+
+
+---[Advisor side: View/edit different advisor's schedule ]
+	- Allow advisor to view a different advisor's schedule 
+	  and print, cancel, etc.
+
+           [Issues to consider]
+	  	- Does a advisor really need to be able to edit another
+		  advisor's schedule??? Seems kinda shady
+         	  (I can't really think of a reason why this is essential)
+
+		- Would there be a need for permissions? Or is it free-for-all
+		  (One advisor allows the other to access their schedule)
+
+
+---[CSS revision]---------------------------------
+	- Make sure all pages have external CSS.
+
+	   [Issues to consider]
+		-Some pages have unique or conflicting internal CSS.
+		  (Do we compile these into a separate external css sheet?)
+
+		-Should we change the original CSS at all?
+		  (Unify design, remove redundancies across pages, etc)
+
+
+---[Other Improvements]---------------------------------
+	- See: Project 2 Resources folder for more.
+
+	       There's a lot that the client wants/wishes for which may-or-may-not
+	       already be implemented in the code we were given.
+	       Not everything in this folder is a requirement (I am assuming) but
+	       fulfilling them may get us a greater grade.
+
+
+---[Documentation]---------------------------------
+	- Document EVERYTHING
+	- Make diagrams, website flow chart, screenshots
+	- Videos/gifs of working website (once everything is finalized)
+	- Comment functions/utility (within pages + external documentation/readme)
+
+
+---[Presentation]----------------------------------
+	- Essentially, take everything from documentation and present it concisely.
+	- Powerpoint......?
+	- Meeting at: ITE 240, 12/20 or 12/21 (choose date)
+
+	[Requires]
+	a. 20 min presentation + 5 min question time
+		- give live demo of working project within first few minutes
+		- then, talk about what we did, improved upon, etc (Powerpoint?)
+		- be prepared to answer questions.
+
+	b. Professional appearance; at most, business casual wear
+	c. Slick Sheet, a one page advertisement of Project with:
+		- brief description
+		- what we did
+		- highlight of good parts
+		- screenshots/images (does not need color)
+		- More layman/advertising/client oriented, less technical/backend
+		- URL to working project
+		- Three copies of this sheet
+
+	d. Whole project on thumb drive to give to instructor
+		- do...do we get the thumb drive back or........
+		
+	
+
