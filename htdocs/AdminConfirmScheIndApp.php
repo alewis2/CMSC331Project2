@@ -21,7 +21,8 @@ $COMMON = new Common($debug);
 			$majors = $_POST["major"];
 			$repeatDays = $_POST["repeat"];
 			$repeatWeek = $_POST["stepper"];
-			
+                        $studentID = $_POST["studentID"];
+
 			//one week with given start date (Ex. Thur - Wed) ['Thursday']=>[########]
 			$d0 = $date;
 			$d1 = '+1 day ' . $date;
@@ -91,6 +92,7 @@ $COMMON = new Common($debug);
 			//insert new app to DB
 			//print app
 			foreach($datetimes as $dt){
+			  
 				$sql = "SELECT * from `Proj2Appointments` where `Time` = '$dt' and `AdvisorID` = '$id'";
 				$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 				$row = mysql_fetch_row($rs);
@@ -99,10 +101,10 @@ $COMMON = new Common($debug);
 					echo "<br><span style='color:red'>!!</span>";
 				}
 				else{
-					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `Major`, `Max`) values ('$dt', '$id', '$majorDB',1)";
+					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `EnrolledID`, `Major`, `Max`) values ('$dt', '$id', '$studentID' '$majorDB',1)";
 					$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 				}
-				echo "<br><br>";
+   				    echo "<br><br>";
 			}
 		?>
 		<br>

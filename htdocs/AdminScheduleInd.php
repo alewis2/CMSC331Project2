@@ -80,6 +80,15 @@ session_start();
         	<input type="number" id="stepper" name="stepper" min="0" max="4" value="0" />
 		      more week(s)</h3>
         </div>
+
+
+<div class="field">
+    <h3> Add the student with the ID 
+    <input type="text" id="StudentID" name="studentID" min="7" max="7" />
+    to this/these appointment slot(s)</h3>
+        </div>
+
+
 	    <div class="nextButton">
 			<input type="submit" name="next" class="button large go" value="Create">
 	</div>
