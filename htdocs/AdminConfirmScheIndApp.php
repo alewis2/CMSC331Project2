@@ -83,11 +83,11 @@ $COMMON = new Common($debug);
 			//get advisor id
 			$User = $_SESSION["UserN"];
 			$Pass = $_SESSION["PassW"];
-			$sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Password` = '$Pass'";
+$sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Password` = '$Pass'";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 			$row = mysql_fetch_row($rs);
 			$id = $row[0];
-			
+
 			//make sure app doesn't exist
 			//insert new app to DB
 			//print app
@@ -101,7 +101,7 @@ $COMMON = new Common($debug);
 					echo "<br><span style='color:red'>!!</span>";
 				}
 				else{
-					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `EnrolledID`, `Major`, `Max`) values ('$dt', '$id', '$studentID' '$majorDB',1)";
+					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `EnrolledID`, `Major`, `EnrolledNum` ,  `Max`) values ('$dt', '$id', '$studentID' , '$majorDB',1,1)";
 					$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 				}
    				    echo "<br><br>";
