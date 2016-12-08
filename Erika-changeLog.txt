@@ -1,4 +1,13 @@
---Erika's Changelog [Last updated: 11/22/16]
+--Erika's Changelog [Last updated: 12/8/16]
+
+	[12/8/16]
+	- Pulled from newest update
+		Admin appointment scheduling + Admin login/password issue fixed
+
+	- Fixed CSS issues for all pages.
+	  	The main issue was that the pages were calling the css stylesheet
+		from the wrong level in the directory.
+		Also fixed all pages that didn't have external stylesheets.
 
 
 	[11/22/16]

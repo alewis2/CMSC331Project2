@@ -27,7 +27,7 @@ function stage1()
   <head>
     <meta charset="UTF-8" />
     <title>Create New Admin</title>
-	<link rel='stylesheet' type='text/css' href='../css/standard.css'/>
+	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
 
      <script type="text/javascript">
 

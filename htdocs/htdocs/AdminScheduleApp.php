@@ -17,10 +17,9 @@ session_start();
 	<h2>Select advising type</h2><br>
 	
 	<form method="post" action="AdminProcessSchedule.php">
-<center>
 	<div class="nextButton">
-		<input type="submit" style="margin-right: 50px;" name="next" class="button large go" value="Individual">
-		<input type="submit" name="next" class="button large go" value="Group">
+		<input type="submit" name="next" class="button large go" value="Individual">
+		<input type="submit" name="next" class="button large go" value="Group" style="float: right;">
 	</div>
 	</form>
         </div>

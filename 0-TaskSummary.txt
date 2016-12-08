@@ -3,9 +3,9 @@ Client Contact: Michelle Bulger
 		(do we have their email.....?)
 
 Timeline
-	11/25		Business Use Cases
+DONE	11/25		Business Use Cases
+DONE	12/1		Select 2 Presentation times
 	12/7		Show client almost completed project
-	12/1		Select 2 Presentation times
 	12/20		All code and documentation, by 11:59:59pm EST. Due date.
 
 	12/20~21	Presentation day
@@ -19,34 +19,19 @@ Submit
 	cp proj2.zip /afs/umbc.edu/users/s/l/slupoli/pub/cs331/USERNAME/proj2
 
 
-
+Presentation
+	at 12/20 Tuesday, 1:30pm
 
 
 
 ////// TASKS /////////////////////////////////////////////////////////
----[Business Use Cases]--------------------------
-Time sensitive: 11/25 (email only)
+---[General Issues]-------------------------------------
+	- Overall testing to make sure everything works
 
-	Essentially a diagram of how the website works.........?
-
-	   [Issues to consider]
-		- Will need to go through old code, see what works and what doesn't,
-		  how the pages interact with each other, etc.
-		 (Should we scrap/redo any parts to make it better, or just 
-		  work off of what's already there?)
-
-		- Ask Lupoli for email...? Who do we contact, Lupoli or the client?
-
-
-
----[Advisor side: Choose student ]----------------
-	- For every new appointment, 
-	   allow advisor to book appointment with specific student 
-
-	   [Issues to consider]
-		- Choosing student: UMBC ID based, Name based, or email based?
-		- Should it have validation for if the student exists in database or no?
-		- What happens if that student already has a meeting?
+---[Front page: Embed video + other small things]
+	- Embed the video from the email to the front page.
+	  Not difficult, but gotta figure out where to put it without making it
+	  cluttered.
 
 
 ---[Advisor side: View/edit different advisor's schedule ]
@@ -60,17 +45,6 @@ Time sensitive: 11/25 (email only)
 
 		- Would there be a need for permissions? Or is it free-for-all
 		  (One advisor allows the other to access their schedule)
-
-
----[CSS revision]---------------------------------
-	- Make sure all pages have external CSS.
-
-	   [Issues to consider]
-		-Some pages have unique or conflicting internal CSS.
-		  (Do we compile these into a separate external css sheet?)
-
-		-Should we change the original CSS at all?
-		  (Unify design, remove redundancies across pages, etc)
 
 
 ---[Other Improvements]---------------------------------
@@ -92,7 +66,7 @@ Time sensitive: 11/25 (email only)
 ---[Presentation]----------------------------------
 	- Essentially, take everything from documentation and present it concisely.
 	- Powerpoint......?
-	- Meeting at: ITE 240, 12/20 or 12/21 (choose date)
+	- Meeting at: ITE 240, 12/20 at 1:30pm
 
 	[Requires]
 	a. 20 min presentation + 5 min question time
@@ -114,4 +88,29 @@ Time sensitive: 11/25 (email only)
 		- do...do we get the thumb drive back or........
 		
 	
+
+
+////// FINISHED TASKS /////////////////////////////////////////////////////////
+
+---[Business Use Cases]--------------------------
+Time sensitive: 11/25 (email only)
+	Done. Visual diagram sent to Lupoli (Erika)
+
+---[Advisor side: Choose student ]----------------
+Make sure advisor can choose a specific student via their ID when making an appointment
+	Done.
+	May require some testing.
+
+---[CSS revision]---------------------------------
+	Done.
+	All pages (including work-order forms) now have consistent CSS from
+	external stylesheet.
+
+---[Advisor side: Fixing password/login issue]----
+Fix issue with admin password/login.
+	Done.
+	What was happening was that when creating a new advisor, their
+	password was being stored in the database with the wrong (unhashed) form.
+
+
 

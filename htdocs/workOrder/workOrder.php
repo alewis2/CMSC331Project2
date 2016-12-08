@@ -38,10 +38,10 @@ function stage1($x)  // suddenly, cannot use $_GET as a parameter 10/7
 	alert("Value: " + stepVal);
     }
     </script>
-	<link rel='stylesheet' type='text/css' href='../../css/standard.css'/>
+	<link rel='stylesheet' type='text/css' href='./../css/standard.css'/>
   </head>
   <body>
-    <div id="login">
+	<div id="login" style="margin-top:0px;">
 	Work order form for <?php echo($x['url']); ?>
     <div id="form">
     <div class="top">

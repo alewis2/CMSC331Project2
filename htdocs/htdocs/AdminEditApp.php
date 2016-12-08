@@ -19,7 +19,7 @@ session_start();
 	<form method="post" action="AdminProcessEdit.php">
 	<center>
 	<div class="nextButton">
-		<input type="submit" style="margin-right:40px;" name="next" class="button large go" value="Individual">
+		<input type="submit" style="margin-right:20px;" name="next" class="button large go" value="Individual">
 		<input type="submit" name="next" class="button large go" value="Group">
 	</div>
 	</form>
