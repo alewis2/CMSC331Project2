@@ -23,6 +23,15 @@ $COMMON = new Common($debug);
 			$repeatWeek = $_POST["stepper"];
                         $studentID = $_POST["studentID"];
 
+                        //sees if the advisor added a student to the spot while making the appointment 
+                        if (strlen($studentID) == 0){
+			  $givenAppointment = 0;
+			}
+
+			else{
+			  $givenAppointment = 1;
+			}
+
 			//one week with given start date (Ex. Thur - Wed) ['Thursday']=>[########]
 			$d0 = $date;
 			$d1 = '+1 day ' . $date;
@@ -101,7 +110,7 @@ $sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Passwor
 					echo "<br><span style='color:red'>!!</span>";
 				}
 				else{
-					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `EnrolledID`, `Major`, `EnrolledNum` ,  `Max`) values ('$dt', '$id', '$studentID' , '$majorDB',1,1)";
+					$sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `EnrolledID`, `Major`, `EnrolledNum` ,  `Max`) values ('$dt', '$id', '$studentID' , '$majorDB','$givenAppointment',1)";
 					$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 				}
    				    echo "<br><br>";
