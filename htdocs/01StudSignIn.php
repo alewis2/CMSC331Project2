@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+//$debug = true;
+//if($debug) { echo("Session variables-> ".var_dump($_SESSION)); }
+
+
+  if(empty($_SESSION['agreement']) || $_SESSION['agreement'] != 'yes'){
+    header('Location: registrationClearance.php');
+  }
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

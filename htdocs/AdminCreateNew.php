@@ -22,10 +22,10 @@
 		<h2>New Advisor has been created:</h2>
 
 		<?php
-			$first = $_SESSION["AdvF"];
+                        $first = $_SESSION["AdvF"];
 			$last = $_SESSION["AdvL"];
 			$user = $_SESSION["AdvUN"];
-			$pass = $_SESSION["AdvPW"];
+$pass = md5($_SESSION["AdvPW"]);
 
 			include('../CommonMethods.php');
 			$debug = false;
@@ -38,7 +38,7 @@
         echo("<h3>Advisor $first $last already exists</h3>");
       }
       else{
-  			$sql = "INSERT INTO `Proj2Advisors`(`FirstName`, `LastName`, `Username`, `Password`) 
+ 			$sql = "INSERT INTO `Proj2Advisors`(`FirstName`, `LastName`, `Username`, `Password`) 
   			VALUES ('$first', '$last', '$user', '$pass')";
         echo ("<h3>$first $last<h3>");
         $rs = $Common->executeQuery($sql, "Advising Appointments");

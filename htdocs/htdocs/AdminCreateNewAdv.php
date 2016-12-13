@@ -70,6 +70,7 @@ session_start();
 		<form method="link" action="AdminUI.php">
 			<input type="submit" name="home" class="button large" value="Cancel">
 		</form>
+
 	</div>
 	</div>
 	</div>
