@@ -4,7 +4,7 @@ session_start();
 $_SESSION["AdvF"] = $_POST["firstN"];
 $_SESSION["AdvL"] = $_POST["lastN"];
 $_SESSION["AdvUN"] = $_POST["UserN"];
-$_SESSION["AdvPW"] = $_POST["PassW"];
+$_SESSION["AdvPW"] = md5($_POST["PassW"]);
 $_SESSION["PassCon"] = false;
 
 if($_POST["PassW"] == $_POST["ConfP"]){
