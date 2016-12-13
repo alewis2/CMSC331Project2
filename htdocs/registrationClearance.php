@@ -28,8 +28,8 @@ Please review the following video and slide presentations prior to scheduling yo
 
 <br><br>
 
-Gateway Requirements, Repeat Policy, Grades, and Withdrawing from Courses (PDF LINK)<br><br>
-Taking a Course Off-Campus (PDF LINK)<br><br>
+     <a href="http://advising.coeit.umbc.edu/gateway-information/">Gateway Requirements, Repeat Policy, and nessesary grades. (not PDF link yet) </a><br><br>
+<a href="http://registrar.umbc.edu/files/2014/07/Verification-of-Transferability.pdf">Taking a Course Off-Campus (PDF LINK)</a><br><br>
 
         <form action="ClearanceProcess.php" method="post" name="Clearance">
 	  <h3><input type="checkbox" required name="agreement" value="yes">
