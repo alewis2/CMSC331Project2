@@ -10,7 +10,8 @@ session_start();
 	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
   </head>
   <body>
-    <a href="01StudSignIn.php"><div class="button large" style="margin: 120px 500px -105px 400px;  z-index: -1; border: 3px solid #fff;">Not an advisor? Student log-in here</div></a>
+    <a href="01StudSignIn.php"><div class="button large" style="margin: 60px 
+500px -90px 400px; z-index: -1; border: 3px solid #fff;">Not an advisor? Student log-in here</div></a>
     <div id="login">
       <div id="form">
         <div class="top">
@@ -18,7 +19,7 @@ session_start();
 		<h2>Admin Sign In</h2>
 
     <?php
-      if($_SESSION["UserVal"] == true){
+    if(!empty($_SESSION['UserVal']) && $_SESSION["UserVal"] == true){
         echo "<h3 style='color:red'>Invalid Username/Password combination</h3>";
       }
     ?>

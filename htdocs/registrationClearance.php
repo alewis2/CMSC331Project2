@@ -14,7 +14,7 @@ $_SESSION["agreement"] = "no";
 
   </head>
   <body>
-        <a href="AdminSignIn.html"><div class="button large" style="margin: 15px 500px -70px 400px; z-index: -1; border: 3px solid #fff">Not a student? Advisor log-in here</div></a>
+        <a href="AdminSignIn.php"><div class="button large" style="margin: 15px 500px -70px 400px; z-index: -1; border: 3px solid #fff">Not a student? Advisor log-in here</div></a>
 
     <div id="login" style="margin-top: 30px;">
         <div class="top">
