@@ -7,7 +7,7 @@ session_start();
   <head>
     <meta charset="UTF-8" />
     <title>Create New Admin</title>
-	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
+	<link rel='stylesheet' type='text/css' href='../css/standard.css'/>
 
      <script type="text/javascript">
     //   window.onload = function () {
@@ -70,7 +70,6 @@ session_start();
 		<form method="link" action="AdminUI.php">
 			<input type="submit" name="home" class="button large" value="Cancel">
 		</form>
-
 	</div>
 	</div>
 	</div>
