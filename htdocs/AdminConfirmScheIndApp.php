@@ -30,6 +30,9 @@ $COMMON = new Common($debug);
 
 			else{
 			  $givenAppointment = 1;
+			
+			  $sql = "DELETE FROM `schu1`.`Proj2Appointments` WHERE `EnrolledID` = '$studentID'";
+			  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 			}
 
 			//one week with given start date (Ex. Thur - Wed) ['Thursday']=>[########]
