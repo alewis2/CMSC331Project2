@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 $debug = false;
 ?>
 
@@ -30,7 +31,7 @@ $debug = false;
 
       $User = $_SESSION["UserN"];
 
-      $sql = "SELECT `id`, `firstName`, `lastName`, `room` FROM `Proj2Advisors` WHERE `Username` = '$User'";
+      $sql = "SELECT `id`, `firstName`, `lastName`, `MeetingRoom` FROM `Proj2Advisors` WHERE `Username` = '$User'";
       $rs = $COMMON->executeQuery($sql, "Advising Appointments");
       $row = mysql_fetch_row($rs);
       $id = $row[0];

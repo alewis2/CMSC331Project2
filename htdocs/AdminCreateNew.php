@@ -25,7 +25,8 @@
                         $first = $_SESSION["AdvF"];
 			$last = $_SESSION["AdvL"];
 			$user = $_SESSION["AdvUN"];
-$pass = md5($_SESSION["AdvPW"]);
+                        $room = $_SESSION["RoomN"];
+                        $pass = md5($_SESSION["AdvPW"]);
 
 			include('../CommonMethods.php');
 			$debug = false;
@@ -38,8 +39,8 @@ $pass = md5($_SESSION["AdvPW"]);
         echo("<h3>Advisor $first $last already exists</h3>");
       }
       else{
- 			$sql = "INSERT INTO `Proj2Advisors`(`FirstName`, `LastName`, `Username`, `Password`) 
-  			VALUES ('$first', '$last', '$user', '$pass')";
+ 			$sql = "INSERT INTO `Proj2Advisors`(`FirstName`, `LastName`, `Username`,`MeetingRoom`,`Password`) 
+  			VALUES ('$first', '$last', '$user','$room', '$pass')";
         echo ("<h3>$first $last<h3>");
         $rs = $Common->executeQuery($sql, "Advising Appointments");
       }

@@ -51,6 +51,14 @@ session_start();
 	      		<input id="UserN" size="20" maxlength="50" type="text" name="UserN" required>
 	   	</div>	 
 
+
+                <div class="field">
+                        <label for="Room">Appointment Meeting Room</label>
+                        <input id="Room" size="20" maxlength="50" type="text" name="Room" required>
+                </div>
+                <br>
+
+
 		<div class="field">
 	     		<label for="PassW">Password</label>
 	      		<input id="PassW" size="20" maxlength="50" type="password" name="PassW" required>
