@@ -122,9 +122,9 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
     <div id="login">
       <div id="form">
         <div class="top">
-		<h2>Updating of Password Complete</h2>
-		<form method="link" action="AdminUI.php">
-			<input type="submit" name="home" class="button large" value="Home">
+   <h2>Updating of Password Complete</h2>
+                <form method="link" action="Logout.php">
+                <input type="submit" name="next" class="button large go" value="Log Out">
 		</form>
 
 	</div>
