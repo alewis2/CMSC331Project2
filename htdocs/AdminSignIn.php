@@ -6,7 +6,7 @@ session_start();
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>UMBC COEIT Engineering and Computer Science Advising Admin Sign In</title>
+    <title>COEIT Engineering and Computer Science Advising Admin Sign In</title>
 	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
   </head>
   <body>

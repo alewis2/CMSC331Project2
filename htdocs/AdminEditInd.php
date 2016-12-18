@@ -30,82 +30,61 @@ $COMMON = new Common($debug);
 
 
             $sql = "SELECT * FROM `Proj2Appointments` WHERE `AdvisorID` != '0' and `Time` > '".date('Y-m-d H:i:s')."' ORDER BY `Time`";
-            $rs = $COMMON->executeQuery($sql, "Advising Appointments");
-            $row = mysql_fetch_array($rs, MYSQL_NUM); 
-			//first item in row
-            if($row){
-              echo("<form action=\"AdminConfirmEditInd.php\" method=\"post\" name=\"Confirm\">");
-              
+$rs = $COMMON->executeQuery($sql, "Advising Appointments"); 
 
-	echo("<table border='1px'>\n<tr>");
-	echo("<tr><td width='320px'>Time</td><td>Majors</td><td>Enrolled</td></tr>\n");
 
-              $secsql = "SELECT `FirstName`, `LastName` FROM `Proj2Advisors` WHERE `id` = '$row[2]'";
-              $secrs = $COMMON->executeQuery($secsql, "Advising Appointments");
-              $secrow = mysql_fetch_row($secrs);
+            
+if($rs != null){
+  echo("<form action=\"AdminConfirmEditInd.php\" method=\"post\" na\
+me=\"Confirm\">");
 
-              if($row[4]){
+  // Table begins                                                   
+  echo("<table>");
+  echo("<tr class='tableTop'><td width='300px'>Time</td><td width='\
+150px'>Majors</td><td>Students</td></tr>\n");
+  
+  while($row = mysql_fetch_array($rs)){
+    $secsql = "SELECT `FirstName`, `LastName` FROM `Proj2Advisors` WHERE `id` = '$row[2]'";
+    $secrs = $COMMON->executeQuery($secsql, "Advising Appointments");
+    $secrow = mysql_fetch_row($secrs);
+
+    if($row[4]){
                 $trdsql = "SELECT `FirstName`, `LastName` FROM `Proj2Students` WHERE `StudentID` = '$row[4]'";
                 $trdrs = $COMMON->executeQuery($trdsql, "Advising Appointments");
                 $trdrow = mysql_fetch_row($trdrs);
-              }
+    }
 
-              echo("<tr><td><label for='$row[0]'><input type=\"radio\" id='$row[0]' name=\"IndApp\" 
-                required value=\"row[]=$row[1]&row[]=$secrow[0]&row[]=$secrow[1]&row[]=$row[3]&row[]=$row[4]\">");
-              echo(date('l, F d, Y g:i A', strtotime($row[1])). "</label><br>(".getAdvisorName($row[2]).")</td>");
-              if($row[3]){
-                echo("<td>$row[3]</td>"); 
-              }
-              else{
-                echo("Available to all majors"); 
-              }
-              
-              if($row[4]){
-                echo("<td>$trdrow[0] $trdrow[1]</td>");
-              }
-              else{
-                echo("<td>Empty</td>");
-              }
-			  echo("</tr>\n");
+    // Time and Advisor
+    echo("<tr><td>");
 
-              
-			  //rest of items in row
-              while ($row = mysql_fetch_array($rs, MYSQL_NUM)) {
-                $secsql = "SELECT `FirstName`, `LastName` FROM `Proj2Advisors` WHERE `id` = '$row[2]'";
-                $secrs = $COMMON->executeQuery($secsql, "Advising Appointments");
-                $secrow = mysql_fetch_row($secrs);
+    // MEssing around with this
+    echo("<label for='$row[0]'><input type=\"checkbox\" id='$row[0]' name=\"IndApp\" required value=\"row[]=$row[1]&row[]=$secrow[0]&row[]=$secrow[1]&row[]=$row[3]&row[]=$row[4]\">");
+    echo(" ".date('l, F d, Y g:i A', strtotime($row[1])). "</label><br>
+(Advisor: ".getAdvisorName($row[2]).")<br>");
 
-                if($row[4]){
-                  $trdsql = "SELECT `FirstName`, `LastName` FROM `Proj2Students` WHERE `StudentID` = '$row[4]'";
-                  $trdrs = $COMMON->executeQuery($trdsql, "Advising Appointments");
-                  $trdrow = mysql_fetch_row($trdrs);
-                }
+    echo("<td>");
+    if($row[3]){
+      echo("$row[3]");
+    }
+    else{
+      echo("Available to all majors");
+    }
+    echo("</td>");
 
-                echo("<tr><td><label for='$row[0]'><input type=\"radio\" id='$row[0]' name=\"IndApp\" 
-                  required value=\"row[]=$row[1]&row[]=$secrow[0]&row[]=$secrow[1]&row[]=$row[3]&row[]=$row[4]\">");
-                echo(date('l, F d, Y g:i A', strtotime($row[1])). "</label><br>(".getAdvisorName($row[2]).")</td>");
-                if($row[3]){
-                  echo("<td>$row[3]</td>"); 
-                }
-                else{
-                  echo("Available to all majors"); 
-                }
 
-                
+    if($row[4]){ 
+      echo("<td>$trdrow[0] $trdrow[1]</td>");
+    }
+    else{
+      echo("<td>Empty</td>");
+    }
+    echo("</tr>");
 
-                if($row[4]){
-                  echo("<td>$trdrow[0] $trdrow[1]</td>");
-                }
-                else{
-                  echo("<td>Empty</td>");
-                }
-				echo("</tr>\n");
-		
-                
-				
-              }
-              echo("</table>");
 
+}
+  echo("</table>");
+
+  
               echo("<div class=\"nextButton\">");
               echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Delete Appointment\">");
               echo("</div>");

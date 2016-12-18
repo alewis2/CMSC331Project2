@@ -36,7 +36,7 @@ html{
 
   </head>
   <body>
-       <a href="AdminSignIn.php"><div class="button large" style="margin: 60px 500px -90px 400px; z-index: -1; border: 3px solid #fff">Not a student? Advisor log-in here</div></a>
+       <a href="AdminSignIn.php"><div class="button large" style="margin: 60px 500px -90px 400px; z-index: -1; border: 3px solid #fff;">Not a student? Advisor log-in here</div></a>
     <div id="login">
 		<div><b><font color="red" size="1"></font>This works best using any browser <u>OTHER</u> than IE.</b></div>
       <div id="form">

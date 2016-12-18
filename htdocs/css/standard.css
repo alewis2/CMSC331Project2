@@ -6,6 +6,25 @@ html{
       position: relative; 
       }
 
+
+table, td, tr {
+    border: none;
+}
+
+
+td{
+    border-bottom: 1px #ddd solid;
+    padding: 3px 3px 3px 5px;
+    margin-bottom: 5px;
+}
+.tableTop, .tableTop td {
+    background-color: #ddd;
+    font-size: 14px;
+    padding: 5px;
+    font-weight: bold;
+
+}
+
       body{ 
       margin: 0; 
       padding: 0;}

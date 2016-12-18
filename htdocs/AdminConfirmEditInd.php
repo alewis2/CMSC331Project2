@@ -28,10 +28,12 @@ session_start();
             $ind = $_POST["IndApp"];
             parse_str($ind);
 
+
             $sql = "SELECT `id` FROM `Proj2Advisors` WHERE `FirstName` = '$row[1]' AND `LastName` = '$row[2]'";
             $rs = $COMMON->executeQuery($sql, "Advising Appointments");
             $rod = mysql_fetch_row($rs);
             $adv = $rod[0];
+
 
             if($row[4]){
               $sql = "SELECT `FirstName`, `LastName`, `Email` FROM `Proj2Students` WHERE `StudentID` = '$row[4]'";
@@ -54,6 +56,7 @@ session_start();
               echo("Available to all majors<br>"); 
             }
             echo("Enrolled: ");
+
             if($row[4]){
               echo("$std</b>");
               $sql = "UPDATE `Proj2Students` SET `Status`='C' WHERE `StudentID` = '$row[4]'";

@@ -40,9 +40,7 @@ $advisorName = $row[1]." ".$row[2];
 
 			if ($_SESSION["advisor"] != "Group")  // for individual conferences only
 			{ 
-				$sql = "select * from Proj2Appointments where $temp `EnrolledNum` = 0 
-					and (`Major` like '%$localMaj%' or `Major` = '') and `Time` > '".date('Y-m-d H:i:s', strtotime('+24 hours'))."' and `AdvisorID` = ".$_POST['advisor']." 
-					order by `Time` ASC limit 30";
+				$sql = "select * from Proj2Appointments where $temp `EnrolledNum` = 0 and (`Major` like '%$localMaj%' or `Major` = '') and `Time` > '".date('Y-m-d H:i:s', strtotime('+24 hours'))."' and `AdvisorID` = ".$_POST['advisor']." order by `Time` ASC limit 30";
 				$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 				echo "<h2>Individual Advising</h2><br>";
 				echo "<label for='prompt'>Select appointment with ",$advisorName,":</label><br>";

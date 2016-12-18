@@ -14,7 +14,7 @@ $_SESSION["agreement"] = "no";
 
   </head>
   <body>
-        <a href="AdminSignIn.php"><div class="button large" style="margin: 15px 500px -70px 400px; z-index: -1; border: 3px solid #fff">Not a student? Advisor log-in here</div></a>
+        <a href="AdminSignIn.php"><div class="button large" style="margin: 15px 500px -70px 400px; z-index: -1; border: 3px solid #fff;">Not a student? Advisor log-in here</div></a>
 
     <div id="login" style="margin-top: 30px;">
         <div class="top">
@@ -28,7 +28,7 @@ Please review the following video and slide presentations prior to scheduling yo
 
 <br><br>
 
-     <a href="http://advising.coeit.umbc.edu/gateway-information/">Gateway Requirements, Repeat Policy, and nessesary grades. (not PDF link yet) </a><br><br>
+     <a href="http://advising.coeit.umbc.edu/gateway-information/">Gateway Requirements, Repeat Policy, and necessary grades. (not PDF link yet) </a><br><br>
 <a href="http://registrar.umbc.edu/files/2014/07/Verification-of-Transferability.pdf">Taking a Course Off-Campus (PDF LINK)</a><br><br>
 
         <form action="ClearanceProcess.php" method="post" name="Clearance">
