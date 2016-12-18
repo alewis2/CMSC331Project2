@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previous form
 ?>
 
