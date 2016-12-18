@@ -63,8 +63,8 @@ function stage2($x)
   $COMMON = new Common($debug);
 
   if($debug) { echo("password given is: ".$x['PassW']."."); }
-
-  $sql = "UPDATE `Proj2Advisors` set `MeetingRoom` = '".$_SESSION['Room']."' WHERE `Username` = '".$_SESSION['UserN']."'";
+  array_pop($x);
+  $sql = "UPDATE `Proj2Advisors` set `MeetingRoom` = '".implode($x)."' WHERE `Username` = '".$_SESSION['UserN']."'";
   $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 ?>
