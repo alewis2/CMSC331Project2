@@ -14,13 +14,13 @@ $_SESSION["PassCon"] = false;
   <head>
     <meta charset="UTF-8" />
     <title>Admin Home</title>
-	<link rel='stylesheet' type='text/css' href='../css/standard.css'/>
+	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
   </head>
   <body>
     <div id="login">
       <div id="form">
         <div class="top">
-	<h2> Hello 
+  <h2> Hello, 
 	<?php
 
 	if(!isset($_SESSION["UserN"])) // someone landed this page by accident
