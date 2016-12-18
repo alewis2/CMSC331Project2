@@ -19,6 +19,9 @@ elseif($_POST["next"] == 'Create new Admin Account'){
 elseif($_POST["next"] == 'Update Password'){
 	header('Location: AdminUpdatePassword.php');
 }
+elseif($_POST["next"] == 'Update Meeting Room'){
+  header('Location: AdminUpdateRoom.php');
+}
 else {  header('Location: AdminUI.php'); }
 
 

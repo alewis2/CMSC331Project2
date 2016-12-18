@@ -14,13 +14,13 @@ $_SESSION["PassCon"] = false;
   <head>
     <meta charset="UTF-8" />
     <title>Admin Home</title>
-	<link rel='stylesheet' type='text/css' href='./css/standard.css'/>
+	<link rel='stylesheet' type='text/css' href='../css/standard.css'/>
   </head>
   <body>
     <div id="login">
       <div id="form">
         <div class="top">
-  <h2> Hello, 
+	<h2> Hello 
 	<?php
 
 	if(!isset($_SESSION["UserN"])) // someone landed this page by accident
@@ -38,7 +38,7 @@ $_SESSION["PassCon"] = false;
 		$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		$row = mysql_fetch_row($rs);
 		echo $row[0];
-	?>!
+	?>
 	</h2>
 	
 	<form action="AdminProcessUI.php" method="post" name="UI">
@@ -48,6 +48,7 @@ $_SESSION["PassCon"] = false;
 		<input type="submit" name="next" class="button large selection" value="Edit appointments"><br>
 		<input type="submit" name="next" class="button large selection" value="Search for an appointment"><br>
 		<input type="submit" name="next" class="button large selection" value="Create new Admin Account"><br>
+                <input type="submit" name="next" class="button large selection" value="Update Meeting Room"><br>
 		<input type="submit" name="next" class="button large selection" value="Update Password"><br>
 	</form>
 	<br>
