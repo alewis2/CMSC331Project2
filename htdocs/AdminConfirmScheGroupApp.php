@@ -101,7 +101,7 @@ $COMMON = new Common($debug);
               echo "<br><span style='color:red'>!!</span>";
             }
             else{
-              $sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `Major`, `Max`) values ('$dt', '0', '$majorDB','$studentLimit')";
+              $sql = "insert into Proj2Appointments (`Time`, `AdvisorID`, `Major`, `Max`) values ('$dt', '$id', '$majorDB','$studentLimit')";
               $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
             }
             echo "<br><br>";

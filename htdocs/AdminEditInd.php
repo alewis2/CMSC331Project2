@@ -23,7 +23,7 @@ $COMMON = new Common($debug);
     <div id="login">
       <div id="form">
         <div class="top">
-          <h2>Select which appointment you would like to change: </h2>
+          <h2>Select which appointment you would like to delete: </h2>
 		  <div class="field">
 		  
           <?php
@@ -57,10 +57,10 @@ me=\"Confirm\">");
     // Time and Advisor
     echo("<tr><td>");
 
-    // MEssing around with this
-    echo("<label for='$row[0]'><input type=\"checkbox\" id='$row[0]' name=\"IndApp\" required value=\"row[]=$row[1]&row[]=$secrow[0]&row[]=$secrow[1]&row[]=$row[3]&row[]=$row[4]\">");
-    echo(" ".date('l, F d, Y g:i A', strtotime($row[1])). "</label><br>
-(Advisor: ".getAdvisorName($row[2]).")<br>");
+
+    echo("<label for='$row[0]'><input type=\"checkbox\" id='$row[0]' name=\"checkbox[]\" value=\"$row[0]\">");
+    echo(" ".date('l, F d, Y g:i A', strtotime($row[1])). "</label>
+(Advisor: ".getAdvisorName($row[2]).")<br><br>");
 
     echo("<td>");
     if($row[3]){

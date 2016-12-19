@@ -4,7 +4,7 @@ $debug = false;
 include('../CommonMethods.php');
 $COMMON = new Common($debug);
 
-if($_POST["cancel"] == 'Cancel'){
+if(($_POST["cancel"] == 'Yes') || ($_POST["cancel"] == 'Cancel')){
 	$firstn = $_SESSION["firstN"];
 	$lastn = $_SESSION["lastN"];
 	$studid = $_SESSION["studID"];
@@ -27,9 +27,11 @@ if($_POST["cancel"] == 'Cancel'){
 	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 	
 	$_SESSION["status"] = "cancel";
+	header('Location: 12StudExit.php');
 }
 else{
 	$_SESSION["status"] = "keep";
+	header('Location: 04StudViewApp.php');
 }
-header('Location: 12StudExit.php');
+
 ?>

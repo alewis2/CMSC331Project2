@@ -7,7 +7,7 @@ if($_POST["next"] == 'Schedule appointments'){
 elseif($_POST["next"] == 'Print schedule for a day'){
 	header('Location: AdminPrintSchedule.php');
 }
-elseif($_POST["next"] == 'Edit appointments'){
+elseif($_POST["next"] == 'Edit/delete appointments'){
 	header('Location: AdminEditApp.php');
 }
 elseif($_POST["next"] == 'Search for an appointment'){

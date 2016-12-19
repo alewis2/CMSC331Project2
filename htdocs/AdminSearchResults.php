@@ -3,6 +3,8 @@ session_start();
 $debug = false;
 include('../CommonMethods.php');
 $COMMON = new Common($debug); 
+
+error_reporting(0);
 ?>
 
 <!DOCTYPE html>

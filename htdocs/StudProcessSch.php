@@ -17,9 +17,9 @@ else{
 	$email = mysql_real_escape_string($_SESSION["email"]);
 	$advisor = $_SESSION["advisor"];
 
-	if(debug) { echo("Advisor -> $advisor<br>\n"); }
+	if($debug) { echo("Advisor -> $advisor<br>\n"); }
 
-	$apptime = $_SESSION["appTime"];
+	$appointment = $_SESSION["appointment"];
 
 
 	if(!isset($_SESSION["firstN"])) // for some reason, some empty rows getting placed
@@ -36,7 +36,7 @@ else{
 	// ************************ Lupoli 9-1-2015
 	// we have to check to make sure someone did not steal that spot just before them!! (deadlock)
 	// if the spot was taken, need to stop and reset
-	if( isStillAvailable($apptime, $advisor) ) // then good, take that spot
+	if( isStillAvailable($appointment, $advisor) ) // then good, take that spot
 	{ } 
 	else // spot was taken, tell them to pick another
 	{
@@ -52,16 +52,16 @@ else{
 	if($_POST["finish"] == 'Submit'){
 		if($_SESSION["advisor"] == 'Group')  // student scheduled for a group session
 		{
-			$sql = "select * from Proj2Appointments where `Time` = '$apptime' and `AdvisorID` = 0";
+			$sql = "select * from Proj2Appointments where `id` = $appointment and `AdvisorID` = 0";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 			$row = mysql_fetch_row($rs);
 			$groupids = trim($row[4]);
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `Time` = '$apptime' and `AdvisorID` = 0";
+			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `id` = $appointment and `AdvisorID` = 0";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		}
 		else // student scheduled for an individual session
 		{
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `AdvisorID` = '$advisor' and `Time` = '$apptime'";
+			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `AdvisorID` = '$advisor' and `id` = $appointment";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		}
 		
@@ -82,15 +82,15 @@ else{
 		
 		//schedule new app
 		if($_SESSION["advisor"] == 'Group'){
-			$sql = "select * from Proj2Appointments where `Time` = '$apptime' and `AdvisorID` = 0";
+			$sql = "select * from Proj2Appointments where `id` = $appointment and `AdvisorID` = 0";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 			$row = mysql_fetch_row($rs);
 			$groupids = trim($row[4]);
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `Time` = '$apptime' and `AdvisorID` = 0";
+			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `id` = $appointment and `AdvisorID` = 0";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		}
 		else{
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `Time` = '$apptime' and `AdvisorID` = '$advisor'";
+			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `id` = $appointment and `AdvisorID` = '$advisor'";
 			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 		}
 
@@ -106,21 +106,18 @@ if($debug == false) { header('Location: 12StudExit.php'); }
 
 
 
-function isStillAvailable($apptime, $advisor)
+function isStillAvailable($appointment, $advisor)
 {
 	// advisor could be "Group"
 	global $debug; global $COMMON;
 	$sql = "";
 
-	if($advisor == "Group")
-	{ $sql = "select `EnrolledNum`, `Max` from `Proj2Appointments` where `Time` = '$apptime' and `AdvisorID` = 0";  }
-	else // then specific
-	{ $sql = "select `EnrolledNum`, `Max` from `Proj2Appointments` where `Time` = '$apptime' and `AdvisorID` = '$advisor'";  }
+	$sql = "select * from `Proj2Appointments` where `id` = $appointment";
 	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 	$row = mysql_fetch_row($rs);
 
 	// if max [1] =< EnrolledNum[0], then the spot was indeed taken
-	if($row[1] > $row[0]) // then all good
+	if($row[6] > $row[5]) // then all good
 	{ 
 		if($debug) { echo("spot available\n<br>"); }
 		return true; 

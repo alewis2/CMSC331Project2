@@ -72,12 +72,12 @@ $_SESSION["Delete"] = false;
 		echo("</table>");
 
               echo("<div class=\"nextButton\">");
-              echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Delete Appointment\">");
-              echo("<input style=\"margin-left: 10px\" type=\"submit\" name=\"next\" class=\"button large go\" value=\"Edit Appointment\">");
+              echo("<input type=\"submit\" name=\"next\" class=\"button large\" value=\"Edit Appointment\">");
+              echo("<input style=\"margin-left: 10px\" type=\"submit\" name=\"next\" class=\"button large\" value=\"Delete Appointment\">");
               echo("</div>");
 			  echo("</form>");
 			  echo("<form method=\"link\" action=\"AdminUI.php\">");
-              echo("<input type=\"submit\" name=\"next\" class=\"button large\" value=\"Cancel\">");
+              echo("<br><br><input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Return to Home\">");
               echo("</form>");
             }
             else{

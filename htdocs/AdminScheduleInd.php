@@ -32,7 +32,7 @@ session_start();
 		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-	      <input id="Date" type="date" name="Date" placeholder="mm/dd/yyyy" min="2016-10-01" max="2016-12-01" required autofocus> (mm/dd/yyyy)
+	      <input id="Date" type="date" name="Date" placeholder="mm/dd/yyyy" min="2016-10-01" max="2017-12-01" required autofocus> (mm/dd/yyyy)
 	    </div>
 
 	    <div class="field">

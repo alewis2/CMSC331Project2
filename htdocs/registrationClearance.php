@@ -1,7 +1,8 @@
-<? php
+<?php
 session_start();
 
 $_SESSION["agreement"] = "no";
+//print($_SESSION["agreement"]);
 
 ?>
 
@@ -9,16 +10,15 @@ $_SESSION["agreement"] = "no";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>COEIT Engineering and Computer Science Advising - Registration Clearance</title>
+    <title>UMBC COEIT Engineering and Computer Science Advising - Registration Clearance</title>
     <link rel='stylesheet' type='text/css' href='./css/standard.css'/>
 
   </head>
   <body>
-        <a href="AdminSignIn.php"><div class="button large" style="margin: 15px 500px -70px 400px; z-index: -1; border: 3px solid #fff;">Not a student? Advisor log-in here</div></a>
-
     <div id="login" style="margin-top: 30px;">
+        <a href="AdminSignIn.php"><div class="button large" style="margin: -40px 0px 0px 0px; padding-top: 10px; border: 3px #fff solid; border-radius: 10px;">Not a student? Advisor log-in here</div></a>
         <div class="top">
-		<h2>Registration Clearance</h2><br>
+  <br><h2>Registration Clearance</h2><br>
 
 Every semester students must meet with an advisor in order to obtain registration clearance.<br> 
 Please review the following video and slide presentations prior to scheduling your appointment, so that if you have any questions they can be addressed during your appointment.<br>
@@ -28,8 +28,8 @@ Please review the following video and slide presentations prior to scheduling yo
 
 <br><br>
 
-     <a href="http://advising.coeit.umbc.edu/gateway-information/">Gateway Requirements, Repeat Policy, and necessary grades. (not PDF link yet) </a><br><br>
-<a href="http://registrar.umbc.edu/files/2014/07/Verification-of-Transferability.pdf">Taking a Course Off-Campus (PDF LINK)</a><br><br>
+     <a href="http://advising.coeit.umbc.edu/gateway-information/">Gateway Requirements, Repeat Policy, and necessary grades (Website) </a><br><br>
+<a href="http://registrar.umbc.edu/files/2014/07/Verification-of-Transferability.pdf">Taking a Course Off-Campus (PDF)</a><br><br>
 
         <form action="ClearanceProcess.php" method="post" name="Clearance">
 	  <h3><input type="checkbox" required name="agreement" value="yes">

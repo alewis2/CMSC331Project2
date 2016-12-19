@@ -1,7 +1,7 @@
 <?php
 session_start();
-error_reporting(0);
-$_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previous form
+$_SESSION["appointment"] = $_POST["appointment"]; // radio button selection from previous form
+
 ?>
 
 <html lang="en">
@@ -17,67 +17,64 @@ $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previou
 		<h1>Confirm Appointment</h1>
 	    <div class="field">
 		<form action = "StudProcessSch.php" method = "post" name = "SelectTime">
-	    <?php
-			$debug = false;
-			include('../CommonMethods.php');
-			$COMMON = new Common($debug);
-			
-			$firstn = $_SESSION["firstN"];
-			$lastn = $_SESSION["lastN"];
-			$studid = $_SESSION["studID"];
-			$major = $_SESSION["major"];
-			$email = $_SESSION["email"];
-			
-			if($_SESSION["resch"] == true){
-				$sql = "select * from Proj2Appointments where `EnrolledID` like '%$studid%'";
-				$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-				$row = mysql_fetch_row($rs);
-				$oldAdvisorID = $row[2];
-				$oldDatephp = strtotime($row[1]);
-				
-				if($oldAdvisorID != 0){
-					$sql2 = "select * from Proj2Advisors where `id` = '$oldAdvisorID'";
-					$rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
-					$row2 = mysql_fetch_row($rs2);
-					$oldAdvisorName = $row2[1] . " " . $row2[2];
-				}
-				else{$oldAdvisorName = "Group";}
-				
-				echo "<h2>Previous Appointment</h2>";
-				echo "<label for='info'>";
-				echo "Advisor: ", $oldAdvisorName, "<br>";
-				echo "Appointment: ", date('l, F d, Y g:i A', $oldDatephp), "</label><br>";
-			}
-			
-			$currentAdvisorName;
-			$currentAdvisorID = $_SESSION["advisor"];
-			$currentDatephp = strtotime($_SESSION["appTime"]);
-			if($currentAdvisorID != 0){
-				$sql2 = "select * from Proj2Advisors where `id` = '$currentAdvisorID'";
-				$rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
-				$row2 = mysql_fetch_row($rs2);
-				$currentAdvisorName = $row2[1] . " " . $row2[2];
+  <?php
+  $debug = false;
+include('../CommonMethods.php');
+$COMMON = new Common($debug);
 
-					// ask for by Josh on 10/7/15
+$firstn = $_SESSION["firstN"];
+$lastn = $_SESSION["lastN"];
+$studid = $_SESSION["studID"];
+$major = $_SESSION["major"];
+$email = $_SESSION["email"];
 
-					$location ="";
-					if($currentAdvisorID == 2) { $currentAdvisorID .= " located in ITE 202"; }
-					else if($currentAdvisorID == 3) { $currentAdvisorID .= " located in ITE 203"; }
-					else if($currentAdvisorID == 4) { $currentAdvisorID .= " located in ITE 205"; }
-					else if($currentAdvisorID == 5) { $currentAdvisorID .= " located in ITE 206"; }
-					else {}
-			}
-			else{$currentAdvisorName = "Group Session located in ITE 201B";}
+if(($_SESSION["resch"] != null) && ($_SESSION["resch"] == true)){
+$sql = "select * from Proj2Appointments where `EnrolledID` like '%$studid%'";
+$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+$oldAppointment = mysql_fetch_row($rs);
+
+// Checking contents
+//print_r(array($oldAppointment));
+
+if($oldAppointment != null){
+  $oldDatephp = strtotime($oldAppointment[1]);
+  $sql2 = "select * from Proj2Advisors where `id` = $oldAppointment[2]";
+  $rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
+  $oldAdv = mysql_fetch_row($rs2);
+  $oldAdvisorName = $oldAdv[1] . " " . $oldAdv[2];
+  $oldAdvisorLocation = $oldAdv[5];
+  
+echo "<h2>Previous Appointment</h2>";
+echo "<label for='info'>";
+echo "Appointment: ",date('l, F d, Y g:i A', $oldDatephp),"</label>";
+echo "<b>Advisor</b>: ",$oldAdvisorName,"<br>";
+echo "<b>Location</b>: $oldAdvisorLocation<br>";}
+}
+
+
+$sql3 = "select * from Proj2Appointments where `id` = ".$_SESSION['appointment']."";
+$rs3 = $COMMON->executeQuery($sql3, $_SERVER["SCRIPT_NAME"]);
+$currentAppointment = mysql_fetch_row($rs3);
+$currentDatephp = strtotime($currentAppointment[1]);
+
+$sql4 = "select * from Proj2Advisors where `id` = $currentAppointment[2]";
+$rs4 = $COMMON->executeQuery($sql4, $_SERVER["SCRIPT_NAME"]);
+$currentAdv = mysql_fetch_row($rs4);
+$currentAdvisorName = $currentAdv[1] . " " . $currentAdv[2];
+$currentAdvisorLocation = $currentAdv[5];
 			
-			echo "<h2>Current Appointment</h2>";
-			echo "<label for='newinfo'>";
-			echo "Advisor: ",$currentAdvisorName,"<br>";
-			echo "Appointment: ",date('l, F d, Y g:i A', $currentDatephp),"</label>";
-		?>
+  echo "<h2>New Appointment</h2>";
+  echo "<label for='newinfo'>";
+  echo "Appointment: ",date('l, F d, Y g:i A', $currentDatephp),"</label>";
+  echo "<b>Advisor</b>: ",$currentAdvisorName,"<br>";
+  echo "<b>Location</b>: $currentAdvisorLocation<br>";
+
+echo "<br>The appointment above will be scheduled. Continue?";
+	?>
         </div>
 	    <div class="nextButton">
 		<?php
-			if($_SESSION["resch"] == true){
+    if(($_SESSION["resch"] != null) && ($_SESSION["resch"] == true)){
 				echo "<input type='submit' name='finish' class='button large go' value='Reschedule'>";
 			}
 			else{

@@ -62,7 +62,7 @@ $COMMON = new Common($debug);
 		</form>
 		<form action="02StudHome.php" method="post" name="complete">
 	    <div class="returnButton">
-			<input type="submit" name="return" class="button large go" value="Return to Home">
+			<input type="submit" name="return" class="button large" value="Cancel">
 	    </div>
 		</div>
 		</form>

@@ -22,73 +22,94 @@ session_start();
           <h1>Removed Appointment</h1><br>
 		  <div class="field">
           <?php
-            $debug = false;
-            include('../CommonMethods.php');
-            $COMMON = new Common($debug);
-            $ind = $_POST["IndApp"];
-            parse_str($ind);
 
+    if($_POST["checkbox"] == null){
+      header('Location: AdminEditInd.php');
+    }
+    else{
+      $ind = $_POST["checkbox"];
+      $debug = false;
+      include('../CommonMethods.php');
+      $COMMON = new Common($debug);
 
-            $sql = "SELECT `id` FROM `Proj2Advisors` WHERE `FirstName` = '$row[1]' AND `LastName` = '$row[2]'";
-            $rs = $COMMON->executeQuery($sql, "Advising Appointments");
-            $rod = mysql_fetch_row($rs);
-            $adv = $rod[0];
+      echo("<b>Deleted the following appointment(s): </b><br><table>");
+      
+      
+for($x = 0; $x < count($ind); $x++){
+  echo("<tr><td><br>");
+    
+  
+  $sql = "SELECT * FROM `Proj2Appointments` WHERE `id`=$ind[$x]";
+  $rs = $COMMON->executeQuery($sql, "Advising Appointments");         
+  $row = mysql_fetch_row($rs);
 
+  $sql = "SELECT * FROM `Proj2Advisors` WHERE `id`=$row[2]";
+  $rs = $COMMON->executeQuery($sql, "Advising Appointments"); 
+  $rod = mysql_fetch_row($rs);         
+  $adv = $rod[0];                      
+  $studDelete = false;                              
 
-            if($row[4]){
-              $sql = "SELECT `FirstName`, `LastName`, `Email` FROM `Proj2Students` WHERE `StudentID` = '$row[4]'";
-              $rs = $COMMON->executeQuery($sql, "Advising Appointments");
-              $ros = mysql_fetch_row($rs);
-              $std = $ros[0] . " " . $ros[1];
-              $eml = $ros[2];
-            }
+  echo("<b>Time: ". date('l, F d, Y g:i A', strtotime($row[1])). "</b><br>");
+  echo("<b>Advisor</b>: $rod[1] $rod[2]<br>");                               
+  echo("<b>Majors included</b>: ");                                          
+  if($row[3]){                                                        
+    echo("$row[3]<br>");                                              
+  }                                                                   
+  else{                                                               
+    echo("Available to all majors<br>");                              
+  }                                                                   
+  echo("<b>Students enrolled</b>: ");   
 
-            $sql = "DELETE FROM `Proj2Appointments` WHERE `Time` = '$row[0]' AND `AdvisorID` = '$adv' AND `Major` = '$row[3]' AND `EnrolledID` = '$row[4]'";
-            $rs = $COMMON->executeQuery($sql, "Advising Appointments");
+  // Student updating + email notification
+  if($row[4]){
+    $sql = "SELECT `FirstName`, `LastName`, `Email` FROM `Proj2Students` WHERE `StudentID`='$row[4]'";
+    $rs = $COMMON->executeQuery($sql, "Advising Appointments");
+    $ros = mysql_fetch_row($rs);
+    $std = $ros[0] . " " . $ros[1];
+    $eml = $ros[2];
+    echo("$std");
+    
+    $sql = "UPDATE `Proj2Students` SET `Status`='C' WHERE `StudentID`  = '$row[4]'";                         
+    $rs = $COMMON->executeQuery($sql, "Advising Appointments");      
+    $message = "The following appointment has been deleted by the administration of your advisor: " . "\r\n" .                                     
+      "Time: $row[0]" . "\r\n" .                                     
+      "Advisor: $row[1] $row[2]" . "\r\n" .                          
+      "Student: $std" . "\r\n" .
+      "To schedule for a new appointment, please log back into the UMBC COEIT Engineering and Computer Science Advising webpage."."\r\n"."http://coeadvising.umbc.edu  -> COEIT Advising Scheduling \r\n
+ Reminder, this is only accessible on campus.";                             
+    mail($eml, "Your Advising Appointment Has Been Deleted", $message);
+    $studDelete = true;
+  }
+  else{
+    echo("None");
+  }
 
-            echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
-            echo("Advisor: $row[1] $row[2]<br>");
-            echo("Majors included: ");
-            if($row[3]){
-              echo("$row[3]<br>"); 
-            }
-            else{
-              echo("Available to all majors<br>"); 
-            }
-            echo("Enrolled: ");
-
-            if($row[4]){
-              echo("$std</b>");
-              $sql = "UPDATE `Proj2Students` SET `Status`='C' WHERE `StudentID` = '$row[4]'";
-              $rs = $COMMON->executeQuery($sql, "Advising Appointments");
-              $message = "The following appointment has been deleted by the adminstration of your advisor: " . "\r\n" .
-                "Time: $row[0]" . "\r\n" . 
-                "Advisor: $row[1] $row[2]" . "\r\n" . 
-                "Student: $std" . "\r\n" . 
-                "To schedule for a new appointment, please log back into the UMBC COEIT Engineering and Computer Science Advising webpage." . "\r\n" .
-		"http://coeadvising.umbc.edu  -> COEIT Advising Scheduling \r\n Reminder, this is only accessible on campus."; 
-              mail($eml, "Your Advising Appointment Has Been Deleted", $message); 
-            }
-            else{
-              echo("Empty");
-            }
+  //Deleting appointment
+  $sql = "DELETE FROM `Proj2Appointments` WHERE `id`=$row[0]";  
+  $rs = $COMMON->executeQuery($sql, "Advising Appointments"); 
+  
+  echo("</td>");
+  
+}
+echo("</table>");
+    }
 			?>
 			<br><br>
-			<form method="link" action="AdminUI.php">
-				<input type="submit" name="home" class="button large go" value="Return to Home">
-			</form>
-		</div>
+			<form method="link" action="AdminEditInd.php">
+    <input type="submit" name="home" class="button large go" value="Return to Home">
+    </form>
+    </div>
     </div>    
-	</div>
-	<div class="bottom">
-		<?php
-		if($row[4]){
-              echo "<p style='color:red'>$std has been notified of the cancellation.</p>";
-        }
-		?>
-	</div>
-	</div>
-	</form>
-  </body>
+    </div>
+    <div class="bottom">
+    <?php
+    if($studDelete){
+      echo "<p style='color:red'>Student(s) have been notified of the cancellation.</p>";
+    }
+?>
+</div>
+</div>
+</form>
+</body>
   
 </html>

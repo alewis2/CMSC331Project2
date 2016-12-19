@@ -12,7 +12,7 @@ session_start();
       <div id="form">
         <div class="top">
 		<h1>Schedule Group Appointments</h1>
-<b><font color="red" size="3">Please note only <u>one</u> staff member needs to schedule the GROUP session since it involves all of you. Please identify which advisor will enter this type meeting before continuing.</font></b>
+<b><font color="red" size="3">Please note only <u>one</u> staff member needs to schedule a GROUP session. Please identify which advisor will enter this type meeting before continuing.</font></b>
 
         <form action="AdminConfirmScheGroupApp.php" method="post" name="Confirm">
 	    <div class="field">
@@ -26,7 +26,7 @@ session_start();
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-	      <input id="Date" type="date" name="Date" placeholder="mm/dd/yyyy" min="2016-03-01" max="2016-05-30" required autofocus> (mm/dd/yyyy)
+	      <input id="Date" type="date" name="Date" placeholder="mm/dd/yyyy" min="2016-03-01" max="2017-05-30" required autofocus> (mm/dd/yyyy)
 	    </div>
 
       <div class="field">

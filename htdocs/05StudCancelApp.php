@@ -35,24 +35,27 @@ $COMMON = new Common($debug);
 				$rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
 				$row2 = mysql_fetch_row($rs2);					
 				$oldAdvisorName = $row2[1] . " " . $row2[2];
+				$oldLocation = $row2[5];
 			}
 			else{$oldAdvisorName = "Group";}
-			
-			echo "<h2>Current Appointment</h2>";
-			echo "<label for='info'>";
-			echo "Advisor: ", $oldAdvisorName, "<br>";
-			echo "Appointment: ", date('l, F d, Y g:i A', $oldDatephp), "</label><br>";
+
+echo "<label for='info'>Current Appointment</label>";
+echo "<b>Time: </b>", date('l, F d, Y g:i A', $oldDatephp), "<br>";
+echo "<b>Advisor</b>: ", $oldAdvisorName, "<br>";
+echo "<b>Location</b>: ", $oldLocation, "<br>";			
+
+echo "<br>The following appointment will be canceled. Is this okay?<br>"
 		?>		
         </div>
 	    <div class="finishButton">
-			<form action = "StudProcessCancel.php" method = "post" name = "Cancel">
-			<input type="submit" name="cancel" class="button large go" value="Cancel">
-			<input type="submit" name="cancel" class="button large" value="Keep">
+			<form action="StudProcessCancel.php" method="post" name="Cancel">
+			<input type="submit" name="cancel" class="button large go" value="Yes">
+			<input type="submit" name="cancel" class="button large" value="No">
 			</form>
 	    </div>
 		</div>
 		<div class="bottom">
-			<p>Click "Cancel" to cancel appointment. Click "Keep" to keep appointment.</p>
+			<p>Click "Yes" to cancel appointment. Click "No" to keep appointment.</p>
 		</div>
 		</form>
   </body>

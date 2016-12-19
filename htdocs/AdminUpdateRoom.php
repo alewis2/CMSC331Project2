@@ -15,6 +15,17 @@ else // nothing set yet
   }
 
 function stage1(){
+  include('../CommonMethods.php');
+  $debug = false;
+  $COMMON = new Common($debug);
+  $_SESSION["PassCon"] = false;
+
+  $sql = "select `MeetingRoom` from `Proj2Advisors` WHERE `Username` = '".$_SESSION['UserN']."'";
+  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  $row = mysql_fetch_row($rs);
+  $roomNum = $row[0];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +44,9 @@ function stage1(){
         <div class="top">
                 <h2>Update Room Number</h2>
                 <form action="AdminUpdateRoom.php" method="post" name="Create">
+   <h3>Current Room Number: <?php print($roomNum); ?></h3>
                 <div class="field">
-                        <label for="Room">Room Number</label>
+                        <label for="Room">New Room Number</label>
                         <input id="Room" size="20" maxlength="50" type="text" name="Room" required>
                 </div>
 
@@ -67,31 +79,8 @@ function stage2($x)
   $sql = "UPDATE `Proj2Advisors` set `MeetingRoom` = '".implode($x)."' WHERE `Username` = '".$_SESSION['UserN']."'";
   $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-?>
+  header('Location:AdminUpdateRoom.php');
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Update Room Number</title>
-   <link rel='stylesheet' type='text/css' href='../css/standard.css'/>
-     </script>
-  </head>
-   <body>
-    <div id="login">
-      <div id="form">
-        <div class="top">
-   <h2>Updating of Room Number Complete</h2>
-   <form method="link" action="AdminUI.php">
-   <input type="submit" name="home" class="button large" value="Home">
-   </form>
-
-   </div>
-   </div>
-   </div>
-  </body>
-</html>
-
-<?php
 
    }
+?>

@@ -25,7 +25,7 @@ $_SESSION["PassCon"] = false;
 
 	if(!isset($_SESSION["UserN"])) // someone landed this page by accident
 	{
-		header('Location: AdminSignIn.html');
+		header('Location: AdminSignIn.php');
 
 	}		
 
@@ -45,7 +45,7 @@ $_SESSION["PassCon"] = false;
   
 		<input type="submit" name="next" class="button large selection" value="Schedule appointments"><br>
 		<input type="submit" name="next" class="button large selection" value="Print schedule for a day"><br>
-		<input type="submit" name="next" class="button large selection" value="Edit appointments"><br>
+		<input type="submit" name="next" class="button large selection" value="Edit/delete appointments"><br>
 		<input type="submit" name="next" class="button large selection" value="Search for an appointment"><br>
 		<input type="submit" name="next" class="button large selection" value="Create new Admin Account"><br>
                 <input type="submit" name="next" class="button large selection" value="Update Meeting Room"><br>

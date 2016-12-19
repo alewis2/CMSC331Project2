@@ -4,10 +4,9 @@ session_start();
 //$debug = true;
 //if($debug) { echo("Session variables-> ".var_dump($_SESSION)); }
 
-
-  if(empty($_SESSION['agreement']) || $_SESSION['agreement'] != 'yes'){
-    header('Location: registrationClearance.php');
-  }
+if(empty($_SESSION['agreement']) || $_SESSION['agreement'] != 'yes'){
+  header('Location: registrationClearance.php');
+}
 
 
 
@@ -17,7 +16,7 @@ session_start();
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>UMBC COEIT Engineering and Computer Science Advising Student Sign In</title>
+    <title>UMBC COEIT Engineering and Computer Science Advising - Student Sign In</title>
     <link rel='stylesheet' type='text/css' href='./css/standard.css'/>
 	<style>
 html{
@@ -36,12 +35,14 @@ html{
 
   </head>
   <body>
-       <a href="AdminSignIn.php"><div class="button large" style="margin: 60px 500px -90px 400px; z-index: -1; border: 3px solid #fff;">Not a student? Advisor log-in here</div></a>
+
     <div id="login">
-		<div><b><font color="red" size="1"></font>This works best using any browser <u>OTHER</u> than IE.</b></div>
+
+     <a href="AdminSignIn.php"><div class="button large" style="margin: -40px 0px 0px 0px; padding-top: 10px; border: 3px #fff solid; border-radius: 10px;">Not a student? Advisor log-in here</div></a>
+
       <div id="form">
         <div class="top">
-		<h1>COEIT Engineering and Computer Science Advising</h1>
+		<h1>UMBC COEIT Engineering and Computer Science Advising</h1>
 		<h2>Student Sign In</h2><br>
 
         <form action="StudProcessSignIn.php" method="post" name="SignIn">
@@ -115,7 +116,8 @@ html{
 	    </div>
 		</div>
 		</form>
-
+                <div><b><font color="#888" size="1">This works best using any browser <u>OTHER</u> than IE.</font></b></div>
+</div>
 <!-- <b><font color="red" size="5">This is in TESTING mode only!!! You are creating simulated appointments!!!</font></b>  -->
 
   </body>

@@ -36,44 +36,44 @@ $studID = $_SESSION["studID"];
 					$rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
 					$row2 = mysql_fetch_row($rs2);
 				
-					// ask for by Josh on 10/7/15
+					$location = $row2[5];
 
-					$location ="";
-					if($advisorID == 2) { $location = "ITE 202"; }
-					else if($advisorID == 3) { $location = "ITE 203"; }
-					else if($advisorID == 4) { $location = "ITE 205"; }
-					else if($advisorID == 5) { $location = "ITE 206"; }
-					else {}
-/*
-
-2 = Josh Abrams ITE 202
-3 = Anne Arey ITE 203
-4 = Emily Stephens ITE 205
-5 = Cathy Bielawski ITE 206
-*/
-
-					$advisorName = $row2[1] . " " . $row2[2] . " in ". $location;
+					$advisorName = $row2[1] . " " . $row2[2];
 				}
-				else{$advisorName = "Group <br> Group Advising is the Waiting Area outside of ITE 202";}
+				//else{$advisorName = "Group <br> Group Advising is the Waiting Area outside of ITE 202";}
+
 /*
 Group Advising ITE 201B
 */			
-				echo "<label for='info'>";
-				echo "Advisor: ", $advisorName, "<br>";
-				echo "Appointment: ", date('l, F d, Y g:i A', $datephp), "</label>";
+				echo "<label for='info'>Current Appointment</label>";
+				echo "<b>Time: </b>", date('l, F d, Y g:i A', $datephp), "<br>";
+                                echo "<b>Advisor</b>: ", $advisorName, "<br>";
+				echo "<b>Location</b>: ", $location, "<br>";
+
+echo "         <div class='finishButton'>
+                <form action='StudProcessHome.php' method='post' name='Home'>
+<button type='submit' name='selection' class='button large selection' value='Reschedule'>Reschedule</button>
+<button type='submit' name='selection' class='button large selection' value='Cancel'>Cancel appointment</button>
+</form>";
+
+
 			}
 			else // something is up, and there DB table needs to be fixed
 			{
 				echo("No appointment was detected. It may have been cancelled. Please make another appointment.");
-				$sql = "update `Proj2Students` set `Status` = 'N' where `StudentID` = '$studID'";
+				$sql = "update `Proj2Students` set `Status` = '' where `StudentID` = '$studID'";
 				$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-			}
+				echo("<div class='finishButton'>                                       
+                <form action='StudProcessHome.php' method='post' name='Home'>   <button type='submit' name='selection' class='button large selection' value='Reschedule'>Reschedule</button></form></div>");
+				}
 	
 
 		?>
         </div>
 	    <div class="finishButton">
-			<button onclick="location.href = '02StudHome.php'" class="button large go" >Return to Home</button>
+               <form method="link" action="02StudHome.php">
+                <input type="submit" name="home" class="button large go" value="Return to Home">
+                </form>
 	    </div>
 		</div>
 		</form>
