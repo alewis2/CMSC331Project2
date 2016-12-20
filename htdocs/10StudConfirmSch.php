@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION["appointment"] = $_POST["appointment"]; // radio button selection from previous form
+error_reporting(0);
 
 ?>
 
@@ -38,6 +39,11 @@ $oldAppointment = mysql_fetch_row($rs);
 
 if($oldAppointment != null){
   $oldDatephp = strtotime($oldAppointment[1]);
+  $oldMax = $oldAppointment[6];
+  $oldEnrolled = $oldAppointment[5];
+  if($oldMax != 1){ $type = "Group";}
+  else{ $type = "Individual";}
+
   $sql2 = "select * from Proj2Advisors where `id` = $oldAppointment[2]";
   $rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
   $oldAdv = mysql_fetch_row($rs2);
@@ -47,6 +53,7 @@ if($oldAppointment != null){
 echo "<h2>Previous Appointment</h2>";
 echo "<label for='info'>";
 echo "Appointment: ",date('l, F d, Y g:i A', $oldDatephp),"</label>";
+echo ("<b>Appointment Type</b>: $type  ($oldEnrolled/$oldMax enrolled)<br>");
 echo "<b>Advisor</b>: ",$oldAdvisorName,"<br>";
 echo "<b>Location</b>: $oldAdvisorLocation<br>";}
 }
@@ -56,6 +63,11 @@ $sql3 = "select * from Proj2Appointments where `id` = ".$_SESSION['appointment']
 $rs3 = $COMMON->executeQuery($sql3, $_SERVER["SCRIPT_NAME"]);
 $currentAppointment = mysql_fetch_row($rs3);
 $currentDatephp = strtotime($currentAppointment[1]);
+$currentMax = $currentAppointment[6];
+$currentEnrolled = $currentAppointment[5];
+
+if($currentMax != 1){ $type = "Group";}
+else{ $type = "Individual";}
 
 $sql4 = "select * from Proj2Advisors where `id` = $currentAppointment[2]";
 $rs4 = $COMMON->executeQuery($sql4, $_SERVER["SCRIPT_NAME"]);
@@ -66,6 +78,7 @@ $currentAdvisorLocation = $currentAdv[5];
   echo "<h2>New Appointment</h2>";
   echo "<label for='newinfo'>";
   echo "Appointment: ",date('l, F d, Y g:i A', $currentDatephp),"</label>";
+  echo ("<b>Appointment Type</b>: $type  ($currentEnrolled/$currentMax enrolled)<br>");
   echo "<b>Advisor</b>: ",$currentAdvisorName,"<br>";
   echo "<b>Location</b>: $currentAdvisorLocation<br>";
 

@@ -24,6 +24,10 @@ td{
     font-weight: bold;
 
 }
+.packet {
+    font-size: 14px;
+    padding: 10px;
+}
 
       body{ 
       margin: 0; 

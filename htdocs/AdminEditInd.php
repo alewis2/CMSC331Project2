@@ -29,7 +29,7 @@ $COMMON = new Common($debug);
           <?php
 
 
-            $sql = "SELECT * FROM `Proj2Appointments` WHERE `AdvisorID` != '0' and `Time` > '".date('Y-m-d H:i:s')."' ORDER BY `Time`";
+  $sql = "SELECT * FROM `Proj2Appointments` WHERE `AdvisorID` != '0' and `Time` > '".date('Y-m-d H:i:s')."' ORDER BY `Time`";
 $rs = $COMMON->executeQuery($sql, "Advising Appointments"); 
 
 
@@ -71,13 +71,12 @@ me=\"Confirm\">");
     }
     echo("</td>");
 
-
+    echo("<td>");
     if($row[4]){ 
-      echo("<td>$trdrow[0] $trdrow[1]</td>");
+      echo("$trdrow[0] $trdrow[1]");
     }
-    else{
-      echo("<td>Empty</td>");
-    }
+    echo("</td>");
+    
     echo("</tr>");
 
 

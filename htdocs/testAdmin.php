@@ -97,13 +97,14 @@ while($row = mysql_fetch_row($rs)){
 -->
 					</select>
 			</div>
-	    <div class="finishButton">
-			<button onclick="location.href = '02StudHome.php'" class="button large go" >Return to Home</button>
-	    </div>
+
 
 			<div class="nextButton">
 				<input type="submit" name="save" class="button large go" value="Save">
 			</div>
+            <div class="finishButton">
+  <button onclick="location.href = '02StudHome.php'" class="button large" >Back</button>
+  </div>
 
 			</div>
 		</form>

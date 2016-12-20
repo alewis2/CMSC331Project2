@@ -49,21 +49,16 @@ else{
 
 	
 	//regular new schedule
-	if($_POST["finish"] == 'Submit'){
-		if($_SESSION["advisor"] == 'Group')  // student scheduled for a group session
-		{
-			$sql = "select * from Proj2Appointments where `id` = $appointment and `AdvisorID` = 0";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-			$row = mysql_fetch_row($rs);
-			$groupids = trim($row[4]);
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `id` = $appointment and `AdvisorID` = 0";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		}
-		else // student scheduled for an individual session
-		{
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `AdvisorID` = '$advisor' and `id` = $appointment";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		}
+	if($_POST["finish"] == 'Submit'){	
+	// student scheduled for an individual session
+	  $sql = "select * from Proj2Appointments where `id` = $appointment";
+	  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	  $row = mysql_fetch_row($rs);
+	  $groupids = trim($row[4]);
+
+	  $sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids  $studid' where `id` = $appointment";
+	  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+			
 		
 	
 		$_SESSION["status"] = "complete";
@@ -75,25 +70,21 @@ else{
 		$row = mysql_fetch_row($rs);
 		$oldAdvisorID = $row[2];
 		$oldAppTime = $row[1];
-		$newIDs = trim(str_replace($studid, "", $row[4])); // was adding spaces 4/1/16
+		$newIDs = trim(str_replace($studid, "", $row[4]));
 		
 		$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum-1, `EnrolledID` = '$newIDs' where `AdvisorID` = '$oldAdvisorID' and `Time` = '$oldAppTime'";
 		$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		
-		//schedule new app
-		if($_SESSION["advisor"] == 'Group'){
-			$sql = "select * from Proj2Appointments where `id` = $appointment and `AdvisorID` = 0";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-			$row = mysql_fetch_row($rs);
-			$groupids = trim($row[4]);
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `id` = $appointment and `AdvisorID` = 0";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		}
-		else{
-			$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$studid' where `id` = $appointment and `AdvisorID` = '$advisor'";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		}
+	
 
+	$sql = "select * from Proj2Appointments where `id` = $appointment";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	$row = mysql_fetch_row($rs);                              
+	$groupids = trim($row[4]);    
+
+	$sql = "update `Proj2Appointments` set `EnrolledNum` = EnrolledNum+1, `EnrolledID` = '$groupids $studid' where `id` = $appointment";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	
+}
 		$_SESSION["status"] = "resch";
 	}
 
@@ -101,7 +92,6 @@ else{
 	$sql = "update `Proj2Students` set `Status` = '' where `StudentID` = '$studid'";
 	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-}
 if($debug == false) { header('Location: 12StudExit.php'); }
 
 
