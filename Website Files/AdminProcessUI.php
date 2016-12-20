@@ -13,7 +13,7 @@ elseif($_POST["next"] == 'Edit/delete appointments'){
 elseif($_POST["next"] == 'Search for an appointment'){
 	header('Location: AdminSearchApp.php');
 }
-elseif($_POST["next"] == 'Create new Admin Account'){
+elseif($_POST["next"] == 'Create new Advisor Account'){
 	header('Location: AdminCreateNewAdv.php');
 }
 elseif($_POST["next"] == 'Update Password'){

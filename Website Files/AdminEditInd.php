@@ -88,7 +88,7 @@ me=\"Confirm\">");
               echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Delete Appointment\">");
               echo("</div>");
 			  echo("</form>");
-			  echo("<form method=\"link\" action=\"AdminUI.php\">");
+			  echo("<form method=\"link\" action=\"AdminEditApp.php\">");
               echo("<input type=\"submit\" name=\"next\" class=\"button large\" value=\"Cancel\">");
               echo("</form>");
             }
@@ -96,8 +96,8 @@ me=\"Confirm\">");
               echo("<br><b>There are currently no individual appointments scheduled at the current moment.</b>");
               echo("<br><br>");
 			  echo("</td</tr>");
-              echo("<form method=\"link\" action=\"AdminUI.php\">");
-              echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Return to Home\">");
+              echo("<form method=\"link\" action=\"AdminEditApp.php\">");
+              echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Cancel\">");
               echo("</form>");
             }
           ?>

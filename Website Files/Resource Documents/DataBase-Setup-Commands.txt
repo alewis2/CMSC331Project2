@@ -4,6 +4,7 @@ CREATE TABLE `Proj2Advisors` (
   `LastName` varchar(50) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
+  `MeetingRoom` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 

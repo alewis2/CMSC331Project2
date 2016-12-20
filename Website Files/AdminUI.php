@@ -44,10 +44,10 @@ $_SESSION["PassCon"] = false;
 	<form action="AdminProcessUI.php" method="post" name="UI">
   
 		<input type="submit" name="next" class="button large selection" value="Schedule appointments"><br>
-		<input type="submit" name="next" class="button large selection" value="Print schedule for a day"><br>
 		<input type="submit" name="next" class="button large selection" value="Edit/delete appointments"><br>
-		<input type="submit" name="next" class="button large selection" value="Search for an appointment"><br>
-		<input type="submit" name="next" class="button large selection" value="Create new Admin Account"><br>
+		<input type="submit" name="next" class="button large selection" value="Print schedule for a day"><br>
+		<input type="submit" name="next" class="button large selection" value="Search for an appointment"><br><br>
+		<input type="submit" name="next" class="button large selection" value="Create new Advisor Account"><br>
                 <input type="submit" name="next" class="button large selection" value="Update Meeting Room"><br>
 		<input type="submit" name="next" class="button large selection" value="Update Password"><br>
 	</form>
